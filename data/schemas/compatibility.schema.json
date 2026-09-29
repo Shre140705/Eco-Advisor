@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ecoadvisor.local/schema/compatibility.schema.json",
+  "title": "EcoAdvisor Food Packaging Compatibility Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["compatibility_id", "food_id", "packaging_id", "compatibility_score", "is_eligible_default", "data_status"],
+  "properties": {
+    "compatibility_id": {"type": "string", "pattern": "^CMP-[0-9]{4}$"},
+    "food_id": {"type": "string", "pattern": "^FOOD-[0-9]{3}$"},
+    "packaging_id": {"type": "string", "pattern": "^PKG-[0-9]{3}$"},
+    "compatibility_score": {"type": "number", "minimum": 0, "maximum": 100},
+    "is_eligible_default": {"type": "boolean"},
+    "hard_constraint_reason": {"type": ["string", "null"], "maxLength": 1000},
+    "data_status": {"type": "string", "enum": ["LITERATURE", "REGULATORY", "ASSUMPTION", "SYNTHETIC", "USER_INPUT"]},
+    "source_ids": {"type": "array", "items": {"type": "string", "pattern": "^SRC-[0-9]{3}$"}},
+    "notes": {"type": ["string", "null"], "maxLength": 1500}
+  }
+}

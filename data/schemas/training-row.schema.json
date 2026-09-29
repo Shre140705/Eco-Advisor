@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ecoadvisor.local/schema/training-row.schema.json",
+  "title": "EcoAdvisor Shelf-Life Training Row",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["row_id", "food_id", "packaging_id", "temperature_c", "relative_humidity", "shelf_life_days", "data_status"],
+  "properties": {
+    "row_id": {"type": "string", "pattern": "^ROW-[0-9]{6}$"},
+    "food_id": {"type": "string", "pattern": "^FOOD-[0-9]{3}$"},
+    "packaging_id": {"type": "string", "pattern": "^PKG-[0-9]{3}$"},
+    "temperature_c": {"type": "number", "minimum": -30, "maximum": 60},
+    "relative_humidity": {"type": "number", "minimum": 0, "maximum": 100},
+    "storage_duration_days": {"type": "number", "exclusiveMinimum": 0},
+    "transport_duration_days": {"type": "number", "minimum": 0},
+    "shelf_life_days": {"type": "number", "exclusiveMinimum": 0},
+    "data_status": {"type": "string", "enum": ["LITERATURE", "ASSUMPTION", "SYNTHETIC", "USER_INPUT"]},
+    "source_ids": {"type": "array", "items": {"type": "string", "pattern": "^SRC-[0-9]{3}$"}},
+    "generator_version": {"type": ["string", "null"], "maxLength": 120},
+    "notes": {"type": ["string", "null"], "maxLength": 1000}
+  }
+}

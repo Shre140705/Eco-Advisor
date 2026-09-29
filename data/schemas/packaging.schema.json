@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ecoadvisor.local/schema/packaging.schema.json",
+  "title": "EcoAdvisor Packaging Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["packaging_id", "material_name", "packaging_category", "data_status", "properties"],
+  "properties": {
+    "packaging_id": {"type": "string", "pattern": "^PKG-[0-9]{3}$"},
+    "material_name": {"type": "string", "minLength": 2, "maxLength": 120},
+    "packaging_category": {"type": "string", "enum": ["PLASTIC", "FIBRE", "BIOBASED", "GLASS", "METAL", "MULTILAYER", "OTHER"]},
+    "food_contact_status": {"type": "string", "enum": ["VERIFIED_SOURCE", "UNVERIFIED", "NOT_ASSESSED"]},
+    "recycling_method": {"type": ["string", "null"], "maxLength": 1000},
+    "composting_required": {"type": ["boolean", "null"]},
+    "disposal_method": {"type": ["string", "null"], "maxLength": 1000},
+    "data_status": {"type": "string", "enum": ["LITERATURE", "REGULATORY", "ASSUMPTION", "SYNTHETIC", "USER_INPUT"]},
+    "source_ids": {"type": "array", "items": {"type": "string", "pattern": "^SRC-[0-9]{3}$"}},
+    "notes": {"type": ["string", "null"], "maxLength": 2000},
+    "properties": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "oxygen_barrier": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "moisture_barrier": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "light_barrier": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "mechanical_strength": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "flexibility": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "heat_resistance": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "acidic_food_compatibility": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "high_moisture_compatibility": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "oily_food_compatibility": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "liquid_food_compatibility": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "carbon_footprint_score": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "recyclability": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "recycled_content": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "biodegradability": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "compostability": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "reusability": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "material_circularity": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "relative_cost": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "material_recovery_potential": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "condition_note": {"type": ["string", "null"], "maxLength": 2000},
+        "confidence_level": {"type": "string", "enum": ["HIGH", "MEDIUM", "LOW", "UNKNOWN"]},
+        "source_ids": {"type": "array", "items": {"type": "string", "pattern": "^SRC-[0-9]{3}$"}}
+      }
+    }
+  }
+}

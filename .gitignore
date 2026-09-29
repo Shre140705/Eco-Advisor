@@ -1,0 +1,11 @@
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+*.db
+.env
+frontend/dist/
+ml/artifacts/*.joblib
+.pytest_cache/
+.DS_Store
+*.tsbuildinfo

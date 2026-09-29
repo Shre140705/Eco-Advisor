@@ -1,0 +1,31 @@
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: ecoadvisor
+      MYSQL_USER: ecoadvisor
+      MYSQL_PASSWORD: ecoadvisor_dev_password
+      MYSQL_ROOT_PASSWORD: root_dev_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/001_schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -uroot -proot_dev_password --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 24
+      start_period: 15s
+  app:
+    build: .
+    environment:
+      PORT: 3000
+      DATABASE_URL: mysql+pymysql://ecoadvisor:ecoadvisor_dev_password@mysql:3306/ecoadvisor
+    ports:
+      - "3000:3000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+volumes:
+  mysql_data:

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EcoAdvisor Cross-Field Validation Rules",
+  "rules": [
+    {"id": "VAL-001", "description": "All normalized scores must be between 0 and 100.", "severity": "ERROR"},
+    {"id": "VAL-002", "description": "pH must be between 0 and 14.", "severity": "ERROR"},
+    {"id": "VAL-003", "description": "Relative humidity and percentages must be between 0 and 100.", "severity": "ERROR"},
+    {"id": "VAL-004", "description": "Minimum temperature must not exceed maximum temperature.", "severity": "ERROR"},
+    {"id": "VAL-005", "description": "Positive-duration and shelf-life fields must be greater than zero when present.", "severity": "ERROR"},
+    {"id": "VAL-006", "description": "LITERATURE, STANDARD, and REGULATORY records must reference at least one source.", "severity": "ERROR"},
+    {"id": "VAL-007", "description": "ASSUMPTION and SYNTHETIC records must include a non-empty notes field.", "severity": "ERROR"},
+    {"id": "VAL-008", "description": "SYNTHETIC training rows must include generator_version.", "severity": "ERROR"},
+    {"id": "VAL-009", "description": "Numerical OTR/WVTR values require unit, measurement condition, source, and confidence.", "severity": "ERROR"},
+    {"id": "VAL-010", "description": "Food and packaging IDs must be unique and referenced IDs must exist.", "severity": "ERROR"},
+    {"id": "VAL-011", "description": "Comparative carbon-footprint scores must not be exported as absolute kg CO2e values.", "severity": "ERROR"},
+    {"id": "VAL-012", "description": "Unknown or unreviewed source records should be visible as warnings in the UI.", "severity": "WARNING"},
+    {"id": "VAL-013", "description": "A compatibility record below the eligibility threshold must include hard_constraint_reason.", "severity": "ERROR"},
+    {"id": "VAL-014", "description": "Food category and physical-state values must use the controlled vocabulary.", "severity": "ERROR"},
+    {"id": "VAL-015", "description": "Any material recycling or composting claim must include region/condition notes when applicable.", "severity": "WARNING"}
+  ]
+}

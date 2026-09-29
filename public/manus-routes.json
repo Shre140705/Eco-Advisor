@@ -1,0 +1,11 @@
+{
+  "routes": [
+    {"path": "/", "title": "EcoAdvisor Home"},
+    {"path": "/recommend", "title": "Packaging Recommendation"},
+    {"path": "/comparison", "title": "Packaging Comparison"},
+    {"path": "/sensitivity", "title": "Sensitivity Analysis"},
+    {"path": "/history", "title": "Recommendation History"},
+    {"path": "/methodology", "title": "Methodology"},
+    {"path": "/references", "title": "References"}
+  ]
+}

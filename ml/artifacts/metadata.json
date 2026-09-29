@@ -1,0 +1,25 @@
+{
+  "version": "rf-synthetic-v1",
+  "features": [
+    "food_category",
+    "physical_state",
+    "packaging_category",
+    "temperature_c",
+    "relative_humidity",
+    "perishability",
+    "moisture_sensitivity",
+    "oxygen_sensitivity",
+    "oxygen_barrier",
+    "moisture_barrier",
+    "mechanical_strength",
+    "sustainability"
+  ],
+  "metrics": {
+    "mae": 0.4559,
+    "rmse": 0.5842,
+    "r2": 0.9999,
+    "rows": 1296,
+    "data_status": "SYNTHETIC",
+    "warning": "Metrics describe performance on generated data and do not establish real-world accuracy."
+  }
+}
