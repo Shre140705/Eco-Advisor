@@ -40,6 +40,20 @@ PORT=3000 uvicorn backend.app:app --host 0.0.0.0 --port 3000
 
 Open `http://localhost:3000`. The API is under `/api`. The application uses `ecoadvisor.db` for history by default.
 
+## Cloud Deployment & Hosting
+
+### Option 1: Render (Recommended - Free Tier)
+1. Push your repository to GitHub.
+2. Sign in to [Render](https://render.com) using your GitHub account.
+3. Click **New +** -> **Web Service** (or use Blueprints with the included `render.yaml`).
+4. Connect your `ecoadvisor` repository.
+5. Render detects the multi-stage `Dockerfile` automatically and builds both the React UI and FastAPI backend.
+6. Click **Deploy Web Service** to get a live URL (e.g. `https://ecoadvisor.onrender.com`).
+
+### Option 2: Railway or Koyeb
+1. Connect your GitHub repository to [Railway](https://railway.app) or [Koyeb](https://koyeb.com).
+2. It detects the `Dockerfile` and deploys both frontend and backend on port 3000.
+
 ## MySQL mode
 
 Use the included `docker-compose.yml`:
